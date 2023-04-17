@@ -1,0 +1,19 @@
+body{
+  background: #0a678b; 
+  color:white;
+}
+hr{
+border: 1px solid white;
+}
+.tabledesign{
+	background: white;
+	border-radius: 10px;
+}
+
+.textsize{
+	size:15px;
+}
+
+.modaldesign{
+	color:black
+}

@@ -1,0 +1,15 @@
+need to install
+xampp - sql database
+sublime text - code editor
+
+step to run this program
+
+extract the RAR files
+
+copy and paste the whole folder of chatbot in xampp htdocs
+
+Location: C:\xampp\htdocs\
+
+import database in xampp 127.0.0.1
+
+and run program in Localhost

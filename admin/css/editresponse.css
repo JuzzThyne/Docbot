@@ -1,0 +1,17 @@
+body{
+  background: #0a678b; 
+  color:white;
+}
+hr{
+border: 1px solid white;
+}
+
+label{
+	font-size: 50px;
+	font-weight:bolder;
+}
+
+.thead{
+	 position: sticky;
+     top:0;
+}

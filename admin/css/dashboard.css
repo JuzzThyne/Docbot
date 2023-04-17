@@ -1,0 +1,18 @@
+body{
+  background: #0a678b; 
+  color:white;
+}
+hr{
+border: 1px solid white;
+}
+
+.countsize{
+  font-size: 200px;
+}
+h3{
+  background: white;
+  border-radius: 10px;
+  height: 18%;
+  padding-top: 3%;
+  color:black;
+}
