@@ -12,12 +12,14 @@ require('includes/database.php');
 </head>
     <style>
     .form_new {
-      width: 300px;
+      width: 400px;
       margin: auto;
-      margin-top: 50px;
+      margin-top: 100px;
       border: 1px solid #ccc;
       padding: 20px;
       text-align: center;
+      background-color: #fff;
+      border-radius: 10px;
     }
     label {
       display: block;
@@ -38,6 +40,20 @@ require('includes/database.php');
       border: none;
       cursor: pointer;
     }
+    .par{
+        float: left;
+        
+    }
+    .ref {
+        color: aqua;
+    }
+    .ref:hover{
+        size: unset !important;
+        background-color: unset !important;
+        color: unset !important;
+        font-size: unset !important;
+    }
+    
   </style>
 <body style=" background: #0a678b;">
     <form method="POST" class="form_new">
@@ -48,6 +64,7 @@ require('includes/database.php');
     <input type="password" id="password" name="password" required>
     <label for="confirm_password">Confirm Password:</label>
     <input type="password" id="confirm_password" name="confirm_password" required>
+    <p class="par">Already Registered? <a href="login.php" class="ref">signin here</a></p>
     <input type="submit" value="Register">
     </form>
     <?php

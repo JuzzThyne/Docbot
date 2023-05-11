@@ -8,7 +8,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height:15%; font-size:20px;">
   <div class="container-fluid">
-    <img src="image/docbot_logo.png" alt="Logo" width="200" height="50" class="d-inline-block align-text-center"></a>
+    <a href="index.php"><img src="image/docbot_logo.png" alt="Logo" width="200" height="50" class="d-inline-block align-text-center"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,7 +23,7 @@
 	        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
 	    </li>
 
-    	<h2>|</h2>
+    	<!-- <h2>|</h2>
 	    <li class="nav-item">
 	        <a class="nav-link active" aria-current="page" href="chatbot.php">Ask About Medicine</a>
 	    </li>
@@ -31,7 +31,7 @@
 	    <h2>|</h2>
 	   	<li class="nav-item">
 	        <a class="nav-link active" aria-current="page" href="chatbotrecommend.php">Ask for Recommended Medicine</a>
-	    </li>
+	    </li> -->
 
 	    <!-- <h2>|</h2>
 	    <li class="nav-item">

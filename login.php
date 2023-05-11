@@ -69,6 +69,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       border: none;
       cursor: pointer;
     }
+    .par{
+        float: left;
+        
+    }
+    .ref {
+        color: aqua;
+    }
+    .ref:hover{
+        size: unset !important;
+        background-color: unset !important;
+        color: unset !important;
+        font-size: unset !important;
+    }
+    
   </style>
 <body style=" background: #0a678b;">
     <form method="POST" class="form_new">
@@ -77,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" id="username" name="username" required>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
-        <a href="register.php">register here</a>
+        <p class="par">No Account? <a href="register.php" class="ref">register here</a></p>
         <input type="submit" value="Login">
     </form>
     <?php

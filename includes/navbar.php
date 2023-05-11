@@ -10,7 +10,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">
       <img src="image/docbot_logo.png" alt="Logo" width="200" height="50" class="d-inline-block align-text-center" >
-      
+      <a href="index.php"></a>
     </a>
   </div>
 </nav>
