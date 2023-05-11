@@ -112,9 +112,9 @@ input[type="submit"]:disabled {
 </style> 
 
 </head>
-<body>
+<body style=" background: #0a678b;">
 
-<div class="container">
+<div class="container" style="margin-top: 60px;">
 <?php
 // Connect to database
 $servername = "localhost";
