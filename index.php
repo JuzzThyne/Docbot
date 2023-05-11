@@ -17,9 +17,18 @@ require('includes/indexnav.php');
 
 	 	<div class="col-sm-8 justify-content-center">
 	 		<br><br>
-	 		<h3 class="textcolor">Live Chat with The Doctors & Other Patients</h3>
-	 		<a href="groupchat.php" class="btn btn-warning  btn-lg btn-block">Start Live Group Chat</a>
-	 		<br><br>
+			<?php
+			// Start the session
+			if (session_status() == PHP_SESSION_NONE) {
+				session_start();
+			}
+			// Check if the user is already logged in
+			if (isset($_SESSION['username'])){
+				echo '<h3 class="textcolor">Live Chat with The Doctors & Other Patients</h3>';
+				echo '<a href="groupchat.php" class="btn btn-warning  btn-lg btn-block">Start Live Group Chat</a>';
+				echo '<br><br>';
+			}
+			?>
 	 		<h3 class="textcolor">Ask About Medicine</h3>
 	 		<a href="chatbot.php" class="btn btn-success  btn-lg btn-block">Chat With us Now!</a>
 	 		<br><br>

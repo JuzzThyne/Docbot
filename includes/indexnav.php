@@ -33,14 +33,14 @@
 	        <a class="nav-link active" aria-current="page" href="chatbotrecommend.php">Ask for Recommended Medicine</a>
 	    </li>
 
-	    <h2>|</h2>
+	    <!-- <h2>|</h2>
 	    <li class="nav-item">
 	        <a class="nav-link active" aria-current="page" href="groupchat.php">Live Chat</a>
-	    </li>
+	    </li> -->
 
-	    <h2>|</h2>
-	    
-	     
+		 <?php
+		 include'user_session.php';
+		 ?>
 	</ul>
 
 

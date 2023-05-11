@@ -1,19 +1,37 @@
 <?php
 include("includes/indexnav.php");
-session_start ();
+
+$username = $_SESSION['username'];
+
+// session_start ();
+// function loginForm() {
+//     echo '<br><br><br><br>
+// 	<div class="form-group card box1">
+// 		<div id="loginform">
+// 			<form action="groupchat.php" method="post" >
+// 			<h1>Live Group Chat with the Doctors & Other Patients</h1><hr/>
+// 				<label for="name">Please Enter Your Name To Proceed..</label>
+// 				<input type="text" name="name" id="name" class="form-control" placeholder="Enter Your Name"/><br>
+// 				<input type="submit" class="btn btn-primary form-control" name="enter" id="enter" value="Enter" />
+// 			</form>
+// 		</div>
+// 	</div>
+//    ';
+// }
 function loginForm() {
+    global $username; // Add this line to access $username inside the function
+
     echo '<br><br><br><br>
-	<div class="form-group card box1">
-		<div id="loginform">
-			<form action="groupchat.php" method="post" >
-			<h1>Live Group Chat with the Doctors & Other Patients</h1><hr/>
-				<label for="name">Please Enter Your Name To Proceed..</label>
-				<input type="text" name="name" id="name" class="form-control" placeholder="Enter Your Name"/><br>
-				<input type="submit" class="btn btn-primary form-control" name="enter" id="enter" value="Enter" />
-			</form>
-		</div>
-	</div>
-   ';
+        <div class="form-group card box1">
+            <div id="loginform">
+                <form action="groupchat.php" method="post" >
+                <h1>Live Group Chat with the Doctors & Other Patients</h1><hr/>
+                    <label for="name">Please Enter Your Name To Proceed..</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="" value="' . $username . '" readonly /><br> <!-- Add value attribute with $username -->
+                    <input type="submit" class="btn btn-primary form-control" name="enter" id="enter" value="Enter" />
+                </form>
+            </div>
+        </div>';
 }
 
 if (isset ( $_POST ['enter'] )) {
