@@ -55,9 +55,10 @@ require('includes/database.php');
     }
     
   </style>
-<body style=" background: #0a678b;">
+    <body style=" background: #0a678b;">
     <form method="POST" class="form_new">
     <h1>Register</h1>
+    <div id="message"></div>
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required>
     <label for="password">Password:</label>
@@ -73,29 +74,41 @@ require('includes/database.php');
       $username = $_POST['username'];
       $password = $_POST['password'];
       $confirm_password = $_POST['confirm_password'];
-    
+
       // Validate form data
       if ($password !== $confirm_password) {
         echo "<p>Passwords do not match</p>";
       } else {
-        // Hash the password and store the user's information in the database
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    
-        // Insert the user's information into the database
+        // Check if the username is already taken
         $conn = new mysqli('localhost', 'root', '', 'docbot');
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
-    
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+
+        $sql = "SELECT username FROM users WHERE username = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $username, $hashed_password);
+        $stmt->bind_param("s", $username);
         $stmt->execute();
-    
-        echo "<p>User created successfully!</p>";
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+          echo "<script>document.getElementById('message').innerHTML = 'Username is already taken';</script>";
+        } else {
+          // Hash the password and store the user's information in the database
+          $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+          // Insert the user's information into the database
+          $sql = "INSERT INTO users (username, password, status_text) VALUES (?, ?,'Inactive')";
+          $stmt = $conn->prepare($sql);
+          $stmt->bind_param("ss", $username, $hashed_password);
+          $stmt->execute();
+
+          // Replace the echo statement with this code
+          echo "<script>document.getElementById('message').innerHTML = 'User created successfully!';</script>";
+        }
       }
     }
-    ?>
+
     ?>
 </body>
 

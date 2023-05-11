@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = mysqli_real_escape_string($conn, $username);
     
         // Build the SQL query to select the user with the given username
-        $sql = "SELECT * FROM users WHERE username = '$username'";
+        $sql = "SELECT * FROM users WHERE username = '$username' and status = '1'";
     
         // Execute the query
         $result = mysqli_query($conn, $sql);
