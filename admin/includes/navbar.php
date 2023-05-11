@@ -35,6 +35,9 @@ include('../includes/database.php');
             <li class="nav-item active">
               <a class="nav-link" href="Settings.php">Settings</a>
             </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="accounts.php">Accounts</a>
+            </li>
           </ul>
           <?php 
 

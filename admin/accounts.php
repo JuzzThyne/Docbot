@@ -187,7 +187,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		  header('accounts.php');
         } else {
           // query was successful but no rows were updated
-          echo "No record found for ID $id<br>";
+          echo "No record found <br>";
         }
       } else {
         // query failed
