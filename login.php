@@ -13,25 +13,7 @@ if (isset($_SESSION['username'])) {
   header("Location: index.php");
 }
 
-// Check if the login form has been submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Get the username and password inputs
-  $username = $_POST["username"];
-  $password = $_POST["password"];
 
-  // Call the login function to authenticate the user
-  if (login($username, $password)) {
-    // Set the session variable
-    $_SESSION['username'] = $username;
-
-    // Redirect to the dashboard page
-    header("Location: index.php");
-    // echo "<p style='color: red;'>Logged in</p>";
-  } else {
-    // Display an error message if the login failed
-    echo "<p style='color: red;'>Invalid username or password</p>";
-  }
-}
          
  ?>
 <html>
@@ -87,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body style=" background: #0a678b;">
     <form method="POST" class="form_new">
         <h1>Login</h1>
+        <div id="message"></div>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <label for="password">Password:</label>
@@ -95,6 +78,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Login">
     </form>
     <?php
+
+        // Check if the login form has been submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Get the username and password inputs
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+    
+        // Call the login function to authenticate the user
+        if (login($username, $password)) {
+        // Set the session variable
+        $_SESSION['username'] = $username;
+    
+        // Redirect to the dashboard page
+        header("Location: index.php");
+        // echo "<p style='color: red;'>Logged in</p>";
+        } else {
+        // Display an error message if the login failed
+        echo "<script>document.getElementById('message').innerHTML = '<span style=\"color:red;\">Invalid username or password</span>';</script>";
+    
+        // echo "<p style='color: red;'>Invalid username or password</p>";
+        }
+    }
     function login($username, $password) {
         // Replace these with your database credentials
         $db_host = 'localhost';

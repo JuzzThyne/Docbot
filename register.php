@@ -92,7 +92,8 @@ require('includes/database.php');
         $result = $stmt->get_result();
         
         if ($result->num_rows > 0) {
-          echo "<script>document.getElementById('message').innerHTML = 'Username is already taken';</script>";
+          echo "<script>document.getElementById('message').innerHTML = '<span style=\"color:red;\">Username is already taken</span>';</script>";
+          // echo "<script>document.getElementById('message').innerHTML = 'Username is already taken';</script>";
         } else {
           // Hash the password and store the user's information in the database
           $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -104,7 +105,8 @@ require('includes/database.php');
           $stmt->execute();
 
           // Replace the echo statement with this code
-          echo "<script>document.getElementById('message').innerHTML = 'User created successfully!';</script>";
+          echo "<script>document.getElementById('message').innerHTML = '<span style=\"color:green;\">User created successfully!</span>';</script>";
+          // echo "<script>document.getElementById('message').innerHTML = 'User created successfully!';</script>";
         }
       }
     }
