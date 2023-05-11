@@ -4,6 +4,13 @@ include('includes/navbar.php');
 include('../includes/database.php');
 
 ?>
+<script>
+function confirmUpdateStatus() {
+  if(confirm("Are you sure you want to update the user's status?")) {
+    window.location.href = "accounts.php";
+  }
+}
+</script>
 
 
 <!DOCTYPE html>
@@ -130,8 +137,8 @@ if ($conn->connect_error) {
 }
 
 // Retrieve list of pending accounts
-$sql = "SELECT id, username, status_text FROM users WHERE status='0'";
-// $sql = "SELECT id, username, status_text FROM users";
+// $sql = "SELECT id, username, status_text FROM users WHERE status='0'";
+ $sql = "SELECT id, username, status_text FROM users";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -144,7 +151,11 @@ if ($result->num_rows > 0) {
 	echo "<td>" . $row["username"] . "</td>";
 	if ($row["status_text"] == "Inactive") {
 		echo "<td style='color: red;'>" . $row["status_text"] . "</td>";
-	} else {
+	}
+	elseif($row["status_text"] == "Rejected") {
+		echo "<td style='color: blue;'>" . $row["status_text"] . "</td>";
+	}
+	else {
 		echo "<td style='color: green;'>" . $row["status_text"] . "</td>";
 	}
 	echo "<td>";
@@ -174,17 +185,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Update account status for selected actions
   foreach ($_POST as $key => $value) {
     if (substr($key, 0, 7) == "action_") {
-      $id = substr($key, 7);
+      $id = substr($key, 7);	
       $status = $value;
+	//   echo $status;
       $sql = "UPDATE users SET status='$status' WHERE id='$id'";
       if ($conn->query($sql) === TRUE) {
         if ($conn->affected_rows > 0) {
+			$new_status = $status;
+			// echo $new_status;
           // query was successful and at least one row was updated
           // add your condition here
         //   echo "Updated record for ID $id with status $status<br>";
-		  $sql = "UPDATE users SET status_text='Active' WHERE id='$id'";
-		  $conn->query($sql);
-		  header('accounts.php');
+		if($new_status=='1'){
+			$sql = "UPDATE users SET status_text='Active' WHERE id='$id' and status = '1'";
+		  	$conn->query($sql);
+			echo '<script>confirmUpdateStatus();</script>';
+			// header('accounts.php');
+			
+		}
+		if($new_status=='0'){
+			$sql = "UPDATE users SET status_text='Rejected', status = '2'WHERE id='$id'";
+		  	$conn->query($sql);
+			  echo '<script>confirmUpdateStatus();</script>';
+			// header('accounts.php');
+		}
+		header('accounts.php');
         } else {
           // query was successful but no rows were updated
           echo "No record found <br>";
@@ -194,6 +219,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error updating record: " . $conn->error;
       }
     }
+	header('accounts.php');
   }
 
   $conn->close();
